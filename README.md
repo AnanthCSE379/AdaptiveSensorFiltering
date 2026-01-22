@@ -41,10 +41,10 @@ To ensure the robot never "freezes" while training the model, the system utilize
 ### 1. Data Generator (`data_gen.py`)
 Acts as the hardware simulation layer.
 * **Publishes:** * `/sensor` (`Float64`): Distance measurements with added random noise.
-    * `/odometry` (`Int32`): The actual control/velocity inputs (Ground Truth).
+    * `/odometry` (`Int32`): The actual control/velocity inputs.
 
 ### 2. Data Processor (`dataprocessing.py`)
-Acts as the intelligent driver/filter.
+Processes the incomming sensor data to remove noise.
 * **Subscribes:** Listens to both `/sensor` and `/odometry`.
 * **Buffer Logic:** Accumulates data in a temporary list.
 * **Thread Trigger:** When the buffer hits 10 items, it atomically locks the data, copies it for processing, and clears the main buffer.
@@ -93,7 +93,7 @@ pip install scikit-learn numpy
 
 You will need two terminal windows to run this simulation.
 
-**Terminal 1: Start the Processor (The Brain)**
+**Terminal 1: Start the Processor**
 This node listens for data and performs the ML training.
 
 ```bash
@@ -101,7 +101,7 @@ source install/setup.bash
 ros2 run random_sensor_handling data_processing
 ```
 
-**Terminal 2: Start the Generator (The Simulation)**
+**Terminal 2: Start the Sensor data generator**
 This node starts publishing noisy data.
 
 ```bash
