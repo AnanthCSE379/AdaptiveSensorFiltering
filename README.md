@@ -1,5 +1,5 @@
 
-# RandomSensorDataHandling: Adaptive ROS 2 Sensor Filtering
+# Adaptive ROS 2 Sensor Filtering
 
 ![ROS 2 Humble](https://img.shields.io/badge/ROS2-Humble-blue)
 ![Python 3.10](https://img.shields.io/badge/Python-3.10-yellow)
@@ -7,7 +7,7 @@
 
 ## 📖 Overview
 
-**RandomSensorDataHandling** is a ROS 2 package designed to solve a common problem in robotics: **noisy sensor data in dynamic environments**.
+**AdaptiveSensorFiltering** is a ROS 2 package designed to solve a common problem in robotics: **noisy sensor data in dynamic environments**.
 
 Standard filters (like Kalman filters) often rely on static parameters. This project implements an **Online Machine Learning** approach using Stochastic Gradient Descent (SGD) to dynamically learn the noise patterns of a sensor in real-time. 
 
